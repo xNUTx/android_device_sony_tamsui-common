@@ -14,7 +14,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(uncompressed_ramdisk) $(r
 	$(hide) rm -fr $(PRODUCT_OUT)/combinedroot
 	$(hide) mkdir -p $(PRODUCT_OUT)/combinedroot/sbin
 
-	$(hide) mv $(PRODUCT_OUT)/root/logo.rle $(PRODUCT_OUT)/combinedroot/logo.rle
+	$(hide) cp $(PRODUCT_OUT)/root/logo.rle $(PRODUCT_OUT)/combinedroot/logo.rle
 	$(hide) cp $(uncompressed_ramdisk) $(PRODUCT_OUT)/combinedroot/sbin/
 	$(hide) cp $(recovery_uncompressed_ramdisk) $(PRODUCT_OUT)/combinedroot/sbin/
 	$(hide) cp $(PRODUCT_OUT)/utilities/busybox $(PRODUCT_OUT)/combinedroot/sbin/
@@ -26,12 +26,12 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(uncompressed_ramdisk) $(r
 
 	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/combinedroot/ > $(PRODUCT_OUT)/combinedroot.cpio
 	$(hide) cat $(PRODUCT_OUT)/combinedroot.cpio | gzip > $(PRODUCT_OUT)/combinedroot.fs
-	$(hide) python $(MKELF) -o $@ $(PRODUCT_OUT)/kernel@$(BOARD_FORCE_BOOT_ADDRESS) $(PRODUCT_OUT)/combinedroot.fs@$(BOARD_FORCE_RAMDISK_ADDRESS),ramdisk $(BOARD_KERNEL_CMDLINE)@cmdline
+	$(hide) python $(MKELF) -o $@ $(PRODUCT_OUT)/kernel@$(BOARD_FORCE_BOOT_ADDRESS) $(PRODUCT_OUT)/combinedroot.fs@$(BOARD_SONY_RAMDISK_ADDRESS),ramdisk $(BOARD_KERNEL_CMDLINE)@cmdline
 
 INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 	$(recovery_ramdisk) \
 	$(recovery_kernel)
 	@echo ----- Making recovery image ------
-	$(hide) python $(MKELF) -o $@ $(PRODUCT_OUT)/kernel@$(BOARD_FORCE_BOOT_ADDRESS) $(PRODUCT_OUT)/ramdisk-recovery.img@$(BOARD_FORCE_RAMDISK_ADDRESS),ramdisk $(BOARD_KERNEL_CMDLINE)@cmdline
+	$(hide) python $(MKELF) -o $@ $(PRODUCT_OUT)/kernel@$(BOARD_FORCE_BOOT_ADDRESS) $(PRODUCT_OUT)/ramdisk-recovery.img@$(BOARD_SONY_RAMDISK_ADDRESS),ramdisk $(BOARD_KERNEL_CMDLINE)@cmdline
 	@echo ----- Made recovery image -------- $@

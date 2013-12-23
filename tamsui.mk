@@ -16,12 +16,32 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
+#    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# EGL config
+# Adreno 200 GPU prebuilt blobs   
 PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/config/egl.cfg:system/lib/egl/egl.cfg
+	device/sony/tamsui-common/prebuilt/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw	\
+	device/sony/tamsui-common/prebuilt/etc/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw	\
+	device/sony/tamsui-common/prebuilt/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw	\
+	device/sony/tamsui-common/prebuilt/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw	\
+	device/sony/tamsui-common/prebuilt/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw	\
+	device/sony/tamsui-common/prebuilt/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw	\
+	device/sony/tamsui-common/prebuilt/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw	\
+	device/sony/tamsui-common/prebuilt/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so	\
+	device/sony/tamsui-common/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so	\
+	device/sony/tamsui-common/prebuilt/lib/libgsl.so:system/lib/libgsl.so	\
+	device/sony/tamsui-common/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so	\
+	device/sony/tamsui-common/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so	\
+	device/sony/tamsui-common/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg	\
+	device/sony/tamsui-common/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so	\
+	device/sony/tamsui-common/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so	\
+	device/sony/tamsui-common/prebuilt/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so	\
+	device/sony/tamsui-common/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so	\
+	device/sony/tamsui-common/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so	\
+	device/sony/tamsui-common/prebuilt/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so	\
+	device/sony/tamsui-common/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so	
+
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
@@ -71,6 +91,10 @@ PRODUCT_PACKAGES += \
     libOmxAacEnc \
     libOmxAmrEnc \
     libstagefrighthw
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+	libbt-vendor
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -176,9 +200,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.mem.max_hidden_apps=10
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+# $(call inherit-product, vendor/sony/qcom-common/qcom-common-vendor.mk)
 
-$(call inherit-product, vendor/sony/qcom-common/common-vendor.mk)
-
-$(call inherit-product, vendor/sony/tamsui-common/common-vendor.mk)
+# $(call inherit-product, vendor/sony/tamsui-common/common-vendor.mk)
