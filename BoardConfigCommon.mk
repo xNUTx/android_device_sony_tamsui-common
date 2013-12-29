@@ -50,7 +50,7 @@ TARGET_USES_ION := true
 TARGET_NO_HW_VSYNC := true
 BOARD_EGL_CFG := device/sony/tamsui-common/config/egl.cfg
 
-TARGET_PROVIDES_LIBLIGHTS := true
+TARGET_PROVIDES_LIBLIGHT := true
 
 # Workaround for missing symbols in camera
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
