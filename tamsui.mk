@@ -95,6 +95,9 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
 	libbt-vendor
+	
+PRODUCT_COPY_FILES += \
+	device/sony/tamsui-common/config/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # GPS
 PRODUCT_PACKAGES += \
