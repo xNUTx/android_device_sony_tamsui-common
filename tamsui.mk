@@ -62,7 +62,8 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libQcomUI \
     libqdutils \
-    libtilerenderer
+    libtilerenderer \
+    memtrack.msm7x27a
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -70,7 +71,7 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.primary.msm7x27a \
     audio_policy.conf \
-    libaudioutils
+    libaudioutilsqcom
 
 PRODUCT_COPY_FILES += \
     device/sony/tamsui-common/config/media_profiles.xml:system/etc/media_profiles.xml \
