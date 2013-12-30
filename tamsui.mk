@@ -71,7 +71,7 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.primary.msm7x27a \
     audio_policy.conf \
-    libaudioutilsqcom
+    libaudioutils
 
 PRODUCT_COPY_FILES += \
     device/sony/tamsui-common/config/media_profiles.xml:system/etc/media_profiles.xml \
