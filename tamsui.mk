@@ -69,7 +69,8 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libQcomUI \
     libqdutils \
-    libtilerenderer
+    libtilerenderer \
+    memtrack.msm7x27a
 
 # Audio
 PRODUCT_PACKAGES += \
