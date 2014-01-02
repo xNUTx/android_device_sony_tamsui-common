@@ -19,6 +19,13 @@ PRODUCT_COPY_FILES += \
 #    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
+# GSM fix
+PRODUCT_COPY_FILES += \
+	device/sony/tamsui-common/prebuilt/sbin/rmt_storage:root/sbin/rmt_storage
+	device/sony/tamsui-common/prebuilt/sbin/tad:root/sbin/tad
+	device/sony/tamsui-common/prebuilt/sbin/ta_rmt_service:root/sbin/ta_rmt_service
+	device/sony/tamsui-common/prebuilt/sbin/wait4tad:root/sbin/wait4tad
+
 # Adreno 200 GPU prebuilt blobs   
 PRODUCT_COPY_FILES += \
 	device/sony/tamsui-common/prebuilt/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw	\
@@ -131,15 +138,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-# Ramdisk
-PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/prebuilt/rmt_storage:root/sbin/rmt_storage \
-    device/sony/tamsui-common/prebuilt/ta_rmt_service:root/sbin/ta_rmt_service \
-    device/sony/tamsui-common/prebuilt/tad:root/sbin/tad \
-    device/sony/tamsui-common/prebuilt/wait4tad:root/sbin/wait4tad \
-    device/sony/tamsui-common/config/init.sony.rc:root/init.sony.rc \
-    device/sony/tamsui-common/config/ueventd.sony.rc:root/ueventd.sony.rc
 
 # system props for the MM modules
 PRODUCT_PROPERTY_OVERRIDES += \
