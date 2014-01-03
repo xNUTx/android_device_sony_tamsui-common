@@ -50,7 +50,6 @@ TARGET_USES_GENLOCK := true
 TARGET_QCOM_HDMI_OUT := false
 TARGET_USES_ION := true
 TARGET_NO_HW_VSYNC := true
-BOARD_USES_QCOM_HARDWARE := true
 BOARD_EGL_CFG := device/sony/tamsui-common/config/egl.cfg
 
 TARGET_PROVIDES_LIBLIGHT := true
