@@ -12,6 +12,9 @@ TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_AUDIO_VARIANT := legacy
 TARGET_QCOM_MEDIA_VARIANT := legacy
 
+# Is low-ram device
+PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
+
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := tamsui
 TARGET_BOARD_PLATFORM := msm7x27a
