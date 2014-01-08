@@ -24,7 +24,9 @@ PRODUCT_COPY_FILES += \
 	device/sony/tamsui-common/prebuilt/sbin/rmt_storage:root/sbin/rmt_storage	\
 	device/sony/tamsui-common/prebuilt/sbin/tad:root/sbin/tad	\
 	device/sony/tamsui-common/prebuilt/sbin/ta_rmt_service:root/sbin/ta_rmt_service	\
-	device/sony/tamsui-common/prebuilt/sbin/wait4tad:root/sbin/wait4tad	
+	device/sony/tamsui-common/prebuilt/sbin/wait4tad:root/sbin/wait4tad	\
+	device/sony/tamsui-common/config/init.sony.rc:root/init.sony.rc \
+	device/sony/tamsui-common/config/ueventd.sony.rc:root/ueventd.sony.rc
 
 # Adreno 200 GPU prebuilt blobs   
 PRODUCT_COPY_FILES += \
