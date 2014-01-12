@@ -25,6 +25,7 @@ on init
 
 on emmc-fs
     mount_all /fstab.sony
+    swapon_all /fstab.semc
 
     # SEMC, TA Daemon
     class_start trimarea
