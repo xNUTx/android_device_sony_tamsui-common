@@ -189,6 +189,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     hwui.render_dirty_regions=false \
     ro.max.fling_velocity=4000
 
+# Low RAM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.low_ram=true
+
 # QCOM CpuGovernorService
 PRODUCT_PROPERTY_OVERRIDES += \
     dev.pm.dyn_samplingrate=1

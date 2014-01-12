@@ -92,8 +92,8 @@ on post-fs
     chown root qcom_oncrpc /dev/smem_log
 
     # Configure and enable KSM
-    write /sys/kernel/mm/ksm/pages_to_scan 600
-    write /sys/kernel/mm/ksm/sleep_millisecs 3000
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
 
     #To allow interfaces to get v6 address when tethering is enabled
