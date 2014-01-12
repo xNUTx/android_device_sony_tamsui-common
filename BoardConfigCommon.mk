@@ -52,6 +52,7 @@ TARGET_QCOM_HDMI_OUT := false
 TARGET_USES_ION := true
 TARGET_NO_HW_VSYNC := true
 BOARD_EGL_CFG := device/sony/tamsui-common/config/egl.cfg
+BOARD_USE_MHEAP_SCREENSHOT := true
 
 TARGET_PROVIDES_LIBLIGHT := true
 
