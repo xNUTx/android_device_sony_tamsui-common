@@ -98,6 +98,10 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun0/
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
+#RIL
+BOARD_USES_LEGACY_RIL := true
+BOARD_RIL_CLASS := ../../../device/sony/tamsui-common/ril/
+
 # Disable adb RSA security and enable adb root when debug
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
 ADDITIONAL_DEFAULT_PROPERTIES := ro.adb.secure=0	\
