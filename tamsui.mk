@@ -104,10 +104,10 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-	libbt-vendor
+    libbt-vendor
 	
 PRODUCT_COPY_FILES += \
-	device/sony/tamsui-common/config/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+    device/sony/tamsui-common/config/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -204,9 +204,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     hw.fm.isAnalog=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.mem.max_hidden_apps=10
 
 # $(call inherit-product, vendor/sony/qcom-common/qcom-common-vendor.mk)
 
