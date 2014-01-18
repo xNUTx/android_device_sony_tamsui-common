@@ -59,9 +59,11 @@ QCOM_BSP_WITH_GENLOCK := true
 
 TARGET_PROVIDES_LIBLIGHT := true
 
-#Camera fixes, to use with frameworks_av & native from TamsuiCM11, or copy my commits
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_SONY_HARDWARE -DQCOM_LEGACY_CAM_PARAMS
+# Camera
+# to use with frameworks_av & native from TamsuiCM11, or copy my commits
+COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_CAM_PARAMS
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS
+BOARD_NEEDS_MEMORYHEAPPMEM := true
 
 
 # QCOM hardware
