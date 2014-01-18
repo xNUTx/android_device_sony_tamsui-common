@@ -177,6 +177,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data_netmgrd_nint=3 \
     ro.ril.transmitpower=true
 
+# Web Rendering
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.webview.provider=classic
+
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \

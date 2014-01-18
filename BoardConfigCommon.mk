@@ -96,13 +96,17 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/tamsui-common/recovery/rec
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
-#Bootanimation
+# Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
-#RIL
+# RIL
 BOARD_USES_LEGACY_RIL := true
 BOARD_RIL_CLASS := ../../../device/sony/tamsui-common/ril/
+
+# Web Rendering
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+TARGET_FORCE_CPU_UPLOAD := true
 
 # Disable adb RSA security and enable adb root when debug
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
