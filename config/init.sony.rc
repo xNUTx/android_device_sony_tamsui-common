@@ -56,6 +56,19 @@ on post-fs
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
+    # Setup permissions for accelerometer
+    chown root system /dev/akm8975_dev
+    chmod 0660 /dev/akm8975_dev
+    chown root system /data/misc/akmd_set.txt
+    chmod 0660 /data/misc/akmd_set.txt
+    chown system system /sys/class/compass/akm8975/enable_acc
+    chown system system /sys/class/compass/akm8975/enable_mag
+    chown system system /sys/class/compass/akm8975/enable_ori
+    chown system system /sys/class/compass/akm8975/delay_acc
+    chown system system /sys/class/compass/akm8975/delay_mag
+    chown system system /sys/class/compass/akm8975/delay_ori
+    chown system system /sys/class/compass/akm8975/accel
+
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -371,6 +384,11 @@ service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
+
+# Accelerometer
+service akmd /system/bin/akmd8975
+    class main
+    user root
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
