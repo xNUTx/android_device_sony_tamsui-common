@@ -100,7 +100,8 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libOmxAacEnc \
     libOmxAmrEnc \
-    libstagefrighthw
+    libstagefrighthw \
+    libdashplayer
 
 # Bluetooth
 PRODUCT_PACKAGES += \
