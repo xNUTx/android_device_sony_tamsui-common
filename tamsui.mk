@@ -80,6 +80,7 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.primary.msm7x27a \
     audio_policy.conf \
+    libaudio-resampler \
     libaudioutils
 
 PRODUCT_COPY_FILES += \
