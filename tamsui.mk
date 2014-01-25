@@ -91,6 +91,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm7x27a \
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm7x27a \
+    libsurfaceflinger_client
+
 # Omx
 PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
