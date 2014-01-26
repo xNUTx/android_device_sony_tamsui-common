@@ -20,7 +20,6 @@ TARGET_BOARD_PLATFORM := msm7x27a
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 TARGET_CPU_VARIANT := cortex-a5
-TARGET_ARCH_VARIANT_CPU := cortex-a5
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH := arm
@@ -81,10 +80,6 @@ BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm7x27a
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
-# Webkit
-ENABLE_WEBGL := true
-TARGET_FORCE_CPU_UPLOAD := true
-
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -113,6 +108,7 @@ BOARD_RIL_CLASS := ../../../device/sony/tamsui-common/ril/
 # Web Rendering
 PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 TARGET_FORCE_CPU_UPLOAD := true
+ENABLE_WEBGL := true
 
 # Disable adb RSA security and enable adb root when debug
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
