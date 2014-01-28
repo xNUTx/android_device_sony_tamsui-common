@@ -193,7 +193,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     com.qc.hardware=true \
     debug.sf.hw=1 \
-    debug.composition.type=mdp
+    debug.composition.type=mdp \
+    debug.gr.numframebuffers=3 \
+    ro.bq.gpu_to_cpu_unsupported=1
 
 ## Reference values from CAF
 PRODUCT_PROPERTY_OVERRIDES += \
