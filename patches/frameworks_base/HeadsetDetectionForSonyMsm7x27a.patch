@@ -1,0 +1,46 @@
+From f97703866cbfc4f8fe59eff0d08ed534b24d84df Mon Sep 17 00:00:00 2001
+From: lozohcum <lozohcum@gmail.com>
+Date: Tue, 28 Jan 2014 12:29:01 +0100
+Subject: [PATCH] WiredAccessoryObserver: Headset detection for sony msm7x27a
+
+Sony's headset driver uses the nonstandard headset_sensor switch
+while other drivers (eg power button driver) still use the h2w
+switch, so simply renaming back to h2w is not simple. This looks
+for the headset_sensor switch, and if it's not present falls
+back to the standard h2w switch.
+
+I short wired headset is fixed now.
+---
+ .../java/com/android/server/WiredAccessoryManager.java     | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/services/java/com/android/server/WiredAccessoryManager.java b/services/java/com/android/server/WiredAccessoryManager.java
+index 3c388e2..fa50a28 100644
+--- a/services/java/com/android/server/WiredAccessoryManager.java
++++ b/services/java/com/android/server/WiredAccessoryManager.java
+@@ -341,13 +341,19 @@ private int validateSwitchState(int state) {
+ 
+             // Monitor h2w
+             if (!mUseDevInputEventForAudioJack) {
+-                uei = new UEventInfo(NAME_H2W, BIT_HEADSET, BIT_HEADSET_NO_MIC);
++            // Monitor headset_sensor for sony msm7x27a otherwise fall back to h2w
++                uei = new UEventInfo("headset_sensor", BIT_HEADSET, BIT_HEADSET_NO_MIC);
+                 if (uei.checkSwitchExists()) {
+                     retVal.add(uei);
+                 } else {
+-                    Slog.w(TAG, "This kernel does not have wired headset support");
+-                }
+-            }
++                    uei = new UEventInfo("h2w", BIT_HEADSET, BIT_HEADSET_NO_MIC);
++             if (uei.checkSwitchExists()) {
++                retVal.add(uei);
++                } else {
++                 Slog.w(TAG, "This kernel does not have wired headset support");
++             }
++           }
++         }
+ 
+             // Monitor USB
+             uei = new UEventInfo(NAME_USB_AUDIO, BIT_USB_HEADSET_ANLG, BIT_USB_HEADSET_DGTL);
+-- 
+1.8.5.1
