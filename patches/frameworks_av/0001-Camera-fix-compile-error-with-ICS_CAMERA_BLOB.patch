@@ -1,0 +1,25 @@
+From 6510bf90093cb942a1c1882ada6a697620ec8318 Mon Sep 17 00:00:00 2001
+From: lozohcum <lozohcum@gmail.com>
+Date: Wed, 29 Jan 2014 17:48:02 +0100
+Subject: [PATCH] Camera: fix compile error with ICS_CAMERA_BLOB
+
+---
+ .../camera/libcameraservice/api1/CameraClient.cpp  |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/services/camera/libcameraservice/api1/CameraClient.cpp b/services/camera/libcameraservice/api1/CameraClient.cpp
+index afaf12a..cab7acc 100644
+--- a/services/camera/libcameraservice/api1/CameraClient.cpp
++++ b/services/camera/libcameraservice/api1/CameraClient.cpp
+@@ -706,7 +706,7 @@ status_t CameraClient::sendCommand(int32_t cmd, int32_t arg1, int32_t arg2) {
+     } else if (cmd == CAMERA_CMD_PING) {
+         // If mHardware is 0, checkPidAndHardware will return error.
+         return OK;
+-#ifdef QCOM_HARDWARE
++#if defined(QCOM_HARDWARE) && !defined(ICS_CAMERA_BLOB)
+     } else if (cmd == CAMERA_CMD_HISTOGRAM_ON) {
+         enableMsgType(CAMERA_MSG_STATS_DATA);
+     } else if (cmd == CAMERA_CMD_HISTOGRAM_OFF) {
+-- 
+1.7.5.4
+
