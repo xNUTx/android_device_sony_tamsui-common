@@ -1,0 +1,33 @@
+From d4735dab27587d3b43d08fb25d70656e5f848d1c Mon Sep 17 00:00:00 2001
+From: lozohcum <lozohcum@gmail.com>
+Date: Sat, 1 Feb 2014 16:48:14 +0100
+Subject: [PATCH] patches: fix camera compile; delcare
+ CAMERA_CMD_METADATA_ON/OFF for qcom & ICS_CAMERA_BLOB
+
+---
+ core/jni/android_hardware_Camera.cpp |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/core/jni/android_hardware_Camera.cpp b/core/jni/android_hardware_Camera.cpp
+index 17967e0..12b0d2f 100644
+--- a/core/jni/android_hardware_Camera.cpp
++++ b/core/jni/android_hardware_Camera.cpp
+@@ -710,6 +710,7 @@ static void android_hardware_Camera_setHasPreviewCallback(JNIEnv *env, jobject t
+ static void android_hardware_Camera_setMetadataCb(JNIEnv *env, jobject thiz, jboolean mode)
+ {
+     ALOGV("setMetadataCb: mode:%d", (int)mode);
++#if defined(QCOM_HARDWARE) && !defined(ICS_CAMERA_BLOB)
+     JNICameraContext* context;
+     status_t rc;
+     sp<Camera> camera = get_native_camera(env, thiz, &context);
+@@ -723,6 +724,7 @@ static void android_hardware_Camera_setMetadataCb(JNIEnv *env, jobject thiz, jbo
+     if (rc != NO_ERROR) {
+         jniThrowException(env, "java/lang/RuntimeException", "set metadata mode failed");
+     }
++#endif
+ }
+ 
+ static void android_hardware_Camera_addCallbackBuffer(JNIEnv *env, jobject thiz, jbyteArray bytes, int msgType) {
+-- 
+1.7.5.4
+
