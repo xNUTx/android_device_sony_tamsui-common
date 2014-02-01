@@ -61,6 +61,7 @@ TARGET_DOESNT_USE_FENCE_SYNC := true
 QCOM_BSP_WITH_GENLOCK := true
 
 TARGET_PROVIDES_LIBLIGHT := true
+TARGET_PROVIDES_LIBAUDIO := true
 
 # Camera
 # to use with frameworks_av & native from TamsuiCM11, or copy my commits

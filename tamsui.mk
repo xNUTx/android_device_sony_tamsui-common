@@ -16,10 +16,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-#    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+#    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
 
-# GSM fix
+# Ramdisk
 PRODUCT_COPY_FILES += \
 	device/sony/tamsui-common/prebuilt/sbin/rmt_storage:root/sbin/rmt_storage	\
 	device/sony/tamsui-common/prebuilt/sbin/tad:root/sbin/tad	\
@@ -84,6 +84,7 @@ PRODUCT_PACKAGES += \
     libaudioutils
 
 PRODUCT_COPY_FILES += \
+    device/sony/tamsui-common/config/media_profiles.xml:system/etc/audio_policy.conf \
     device/sony/tamsui-common/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/sony/tamsui-common/config/media_codecs.xml:system/etc/media_codecs.xml \
     device/sony/tamsui-common/config/AudioFilter.csv:system/etc/AudioFilter.csv
