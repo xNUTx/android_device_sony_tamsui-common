@@ -79,6 +79,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm7x27a \
     audio.primary.msm7x27a \
+    audio.usb.default \
     audio_policy.conf \
     libaudio-resampler \
     libaudioutils
