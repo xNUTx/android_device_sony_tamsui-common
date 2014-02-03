@@ -205,8 +205,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.max.fling_velocity=4000
 
 # Low RAM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.low_ram=true
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.config.low_ram=true
 
 # QCOM CpuGovernorService
 PRODUCT_PROPERTY_OVERRIDES += \
