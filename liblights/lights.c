@@ -110,16 +110,11 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	int err = 0;
 	int brightness = rgb_to_brightness(state);
 
-	ALOGV("%s brightness=%d", __func__, brightness);
+	ALOGV("%s brightness=%d color=0x%08x", __func__,brightness,state->color);
 	pthread_mutex_lock(&g_lock);
 	g_backlight = brightness;
-#ifndef STANDARD_LIGHTS
-	err = write_int (LCD_BACKLIGHT_FILE, (brightness / 2));
-#else
 	err = write_int (LCD_BACKLIGHT_FILE, brightness);
-#endif
 	pthread_mutex_unlock(&g_lock);
-
 	return err;
 }
 
@@ -129,14 +124,10 @@ static int set_light_buttons (struct light_device_t *dev, struct light_state_t c
 	int on = is_lit(state);
 	pthread_mutex_lock(&g_lock);
 
-#ifndef STANDARD_LIGHTS
 	if (on >0)
 		err = write_string (LED_CONTROL_FILE, KEY_LED_ON);
 	else
 		err = write_string (LED_CONTROL_FILE, KEY_LED_OFF);
-#else
-	err = write_int (BUTTON_BACKLIGHT_FILE, on ? rgb_to_brightness(state) : 0);
-#endif
 
 	pthread_mutex_unlock(&g_lock);
 
@@ -146,22 +137,29 @@ static int set_light_buttons (struct light_device_t *dev, struct light_state_t c
 static void set_shared_light_locked (struct light_device_t *dev, struct light_state_t *state) {
 	int r, g, b;
 	int err = 0;
-	int sns = 0;
-	int delayOn, delayOff;
 
 	r = (state->color >> 16) & 0xFF;
 	g = (state->color >> 8) & 0xFF;
 	b = (state->color) & 0xFF;
 
-	delayOn = state->flashOnMS;
-	delayOff = state->flashOffMS;
-
-#ifndef STANDARD_LIGHTS
 	if (state->flashMode != LIGHT_FLASH_NONE) {
+#ifndef SUB_LED_NOTIFICATION
 		err = write_string (LED_CONTROL_FILE, RED_LED_BLINK_ON);
 		err = write_string (LED_CONTROL_FILE, GREEN_LED_BLINK_ON);
 		err = write_string (LED_CONTROL_FILE, BLUE_LED_BLINK_ON);
+#else
+		err = write_string (LED_CONTROL_FILE, RED2_LED_BLINK_ON);
+		err = write_string (LED_CONTROL_FILE, GREEN2_LED_BLINK_ON);
+		err = write_string (LED_CONTROL_FILE, BLUE2_LED_BLINK_ON);
+#endif
 	} else {
+
+#ifdef SUB_LED_NOTIFICATION
+		err = write_string (LED_CONTROL_FILE, RED2_LED_BLINK_OFF);
+		err = write_string (LED_CONTROL_FILE, GREEN2_LED_BLINK_OFF);
+		err = write_string (LED_CONTROL_FILE, BLUE2_LED_BLINK_OFF);
+#endif
+
 	if (r>0)
 		err = write_string (LED_CONTROL_FILE, RED_LED_ON);
 	else
@@ -177,19 +175,6 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	else
 		err = write_string (LED_CONTROL_FILE, BLUE_LED_OFF);
 	}
-#else
-	if (state->flashMode != LIGHT_FLASH_NONE) {
-//		err = write_string (SNS_LED_FILE_, r);
-		sns = 255;
-//	} else {
-//		err = write_string (SNS_LED_FILE, r);
-		sns = 0;
-	}
-	err = write_int (RED_LED_FILE, r);
-	err = write_int (GREEN_LED_FILE, g);
-	err = write_int (BLUE_LED_FILE, b);
-	err = write_int (SNS_LED_FILE, sns);
-#endif
 }
 
 static void handle_shared_battery_locked (struct light_device_t *dev) {
@@ -234,14 +219,18 @@ static int open_lights (const struct hw_module_t* module, char const* name,
 	int (*set_light)(struct light_device_t* dev,
 					 struct light_state_t const *state);
 
-	if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
+	if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
 		set_light = set_light_backlight;
-	else if (0 == strcmp(LIGHT_ID_BUTTONS, name))
+	}
+	else if (0 == strcmp(LIGHT_ID_BUTTONS, name)) {
 		set_light = set_light_buttons;
-	else if (0 == strcmp(LIGHT_ID_BATTERY, name))
+	}
+	else if (0 == strcmp(LIGHT_ID_BATTERY, name)) {
 		set_light = set_light_battery;
-	else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
+	}
+	else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name)) {
 		set_light = set_light_notifications;
+	}
 	else {
 		return -EINVAL;
 	}
