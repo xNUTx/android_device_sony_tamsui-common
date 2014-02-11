@@ -1,0 +1,25 @@
+From 30e6ef77873c1fd65757a0812603969fc0e5ac54 Mon Sep 17 00:00:00 2001
+From: lozohcum <lozohcum@gmail.com>
+Date: Tue, 11 Feb 2014 11:36:51 +0100
+Subject: [PATCH] AudioPolicyManager: fix compilation error
+
+---
+ include/hardware_legacy/AudioPolicyManagerBase.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/hardware_legacy/AudioPolicyManagerBase.h b/include/hardware_legacy/AudioPolicyManagerBase.h
+index 5ba09f1..126a8c9 100644
+--- a/include/hardware_legacy/AudioPolicyManagerBase.h
++++ b/include/hardware_legacy/AudioPolicyManagerBase.h
+@@ -577,7 +577,7 @@ protected:
+         uint32_t        mTestLatencyMs;
+ #endif //AUDIO_POLICY_TEST
+ 
+-private:
++public:
+         static float volIndexToAmpl(audio_devices_t device, const StreamDescriptor& streamDesc,
+                 int indexInUi);
+         // updates device caching and output for streams that can influence the
+-- 
+1.7.5.4
+
