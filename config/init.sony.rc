@@ -246,9 +246,6 @@ on post-fs-data
     write /sys/module/lowmemorykiller/parameters/adj 0,1,2,4,9,12
     write /proc/sys/vm/min_free_kbytes 8192
 
-   start qcamerasvr
-   start gpu_dcvsd
-
 service updatemiscta /system/bin/updatemiscta
     class emmc
     user root
