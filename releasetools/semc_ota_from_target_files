@@ -358,7 +358,7 @@ def AppendAssertions(script, info_dict):
   if OPTIONS.override_device == "auto":
     if OPTIONS.override_prop:
         device = GetBuildProp("ro.build.product", info_dict)
-      else:
+    else:
         device = GetBuildProp("ro.product.device", info_dict)
   else:
     device = OPTIONS.override_device
@@ -429,7 +429,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
      metadata = {"post-timestamp": GetBuildProp("ro.build.date.utc",
                                                 OPTIONS.info_dict),
                  }
-   else:
+  else:
      metadata = {"post-build": GetBuildProp("ro.build.fingerprint",
                                             OPTIONS.info_dict),
                  "pre-device": GetBuildProp("ro.product.device",
@@ -557,7 +557,7 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip):
      metadata = {"post-timestamp": GetBuildProp("ro.build.date.utc",
                                                 OPTIONS.target_info_dict),
                  }
-   else:
+  else:
      metadata = {"pre-device": GetBuildProp("ro.product.device",
                                              OPTIONS.source_info_dict),
                  "post-timestamp": GetBuildProp("ro.build.date.utc",
