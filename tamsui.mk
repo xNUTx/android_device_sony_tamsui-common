@@ -88,7 +88,8 @@ PRODUCT_COPY_FILES += \
     device/sony/tamsui-common/config/audio_policy.conf:system/etc/audio_policy.conf \
     device/sony/tamsui-common/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/sony/tamsui-common/config/media_codecs.xml:system/etc/media_codecs.xml \
-    device/sony/tamsui-common/config/AudioFilter.csv:system/etc/AudioFilter.csv
+    device/sony/tamsui-common/config/AudioFilter.csv:system/etc/AudioFilter.csv \
+    device/sony/tamsui-common/config/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt
 
 # QCOM Power
 PRODUCT_PACKAGES += \
