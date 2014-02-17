@@ -220,7 +220,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     hw.fm.isAnalog=true
-
-# $(call inherit-product, vendor/sony/qcom-common/qcom-common-vendor.mk)
-
-# $(call inherit-product, vendor/sony/tamsui-common/common-vendor.mk)
