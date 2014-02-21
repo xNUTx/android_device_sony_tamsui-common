@@ -389,9 +389,9 @@ service akmd /system/bin/akmd8975
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
-        class late_start
-        user camera
-        group camera system inet audio
+    class late_start
+    user camera
+    group camera system inet input
 
 service gpu_dcvsd /system/bin/gpu_dcvsd
     class late_start
