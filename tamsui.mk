@@ -2,6 +2,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/tamsui-common/overlay
 
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -199,6 +201,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.composition.type=mdp \
     debug.gr.numframebuffers=3 \
     ro.bq.gpu_to_cpu_unsupported=1
+
+# Fix legacy fb on kitkat
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zygote.disable_gl_preload=1
 
 ## Reference values from CAF
 PRODUCT_PROPERTY_OVERRIDES += \
