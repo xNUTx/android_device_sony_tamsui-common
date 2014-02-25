@@ -65,8 +65,8 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          module_api_version: 1,
          hal_api_version: 0,
          id: CAMERA_HARDWARE_MODULE_ID,
-         name: "Xperia msm7x30 Camera Wrapper",
-         author: "The CyanogenMod Project, Michael Bestas",
+         name: "Xperia msm7x30 Camera Wrapper inherited for TamusiCm11",
+         author: "The CyanogenMod Project, Michael Bestas inherited for Tamsui by rebelos ",
          methods: &camera_module_methods,
          dso: NULL, /* remove compilation warnings */
          reserved: {0}, /* remove compilation warnings */
@@ -201,20 +201,6 @@ static char *camera_fixup_setparams(int id, const char *settings)
             params.set(KEY_EX_METERING_MODE, "spot");
         }
     }
-
-#ifdef USES_AS3676_TORCH
-    /* HACK - Fix urushi as3676 torch */
-    const char *flashMode = params.get(android::CameraParameters::KEY_FLASH_MODE);
-    if (flashMode) {
-        if (strcmp(flashMode, android::CameraParameters::FLASH_MODE_TORCH) == 0) {
-            system("echo 255 > /sys/class/leds/torch-rgb1/brightness");
-            system("echo 255 > /sys/class/leds/torch-rgb2/brightness");
-        } else if (strcmp(flashMode, android::CameraParameters::FLASH_MODE_OFF) == 0) {
-            system("echo 0 > /sys/class/leds/torch-rgb1/brightness");
-            system("echo 0 > /sys/class/leds/torch-rgb2/brightness");
-        }
-    }
-#endif
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
