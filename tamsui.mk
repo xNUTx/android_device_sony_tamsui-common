@@ -201,6 +201,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.composition.type=mdp \
     debug.gr.numframebuffers=3 \
     ro.bq.gpu_to_cpu_unsupported=1
+    
+# Set default USB interface
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb    
 
 # Fix legacy fb on kitkat
 PRODUCT_PROPERTY_OVERRIDES += \
