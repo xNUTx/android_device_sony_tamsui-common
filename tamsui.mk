@@ -191,8 +191,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Web Rendering
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.webview.provider=classic \ 
-    ro.soundrecorder.default_wav2ch=true
+    persist.webview.provider=classic
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
