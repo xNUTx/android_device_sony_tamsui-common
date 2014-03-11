@@ -152,6 +152,10 @@ PRODUCT_PACKAGES += \
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# Enable Sony apps in play store
+PRODUCT_PACKAGES += \
+ro.com.google.clientidbase.ms=android-sonymobile
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # system props for the MM modules
