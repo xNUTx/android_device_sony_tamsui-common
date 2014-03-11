@@ -191,8 +191,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Web Rendering
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.webview.gralloc_unbind=1 \
-    persist.webview.provider=classic
+    ro.webview.gralloc_unbind=1
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
