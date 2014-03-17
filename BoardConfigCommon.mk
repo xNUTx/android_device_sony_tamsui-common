@@ -40,6 +40,8 @@ COMMON_GLOBAL_CFLAGS += -DEGL_NEEDS_FNW
 
 # Kernel information
 TARGET_KERNEL_SOURCE := kernel/sony/msm7x27a
+# Remove the hash from below line when building for mesona
+# TARGET_KERNEL_SOURCE := kernel/sony/mesona
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_RECOVERY_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 2048
