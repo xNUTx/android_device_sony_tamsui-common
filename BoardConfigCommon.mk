@@ -1,5 +1,3 @@
-USE_CAMERA_STUB := false
-
 TARGET_SPECIFIC_HEADER_PATH := device/sony/tamsui-common/include
 
 TARGET_NO_BOOTLOADER := true
