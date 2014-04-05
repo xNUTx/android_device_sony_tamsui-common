@@ -62,8 +62,8 @@ QCOM_BSP_WITH_GENLOCK := true
 # libEGL: allow devices to workaround Google bug 10194508
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
+# Device specific hardware abstract layers 
 TARGET_PROVIDES_LIBLIGHT := true
-TARGET_PROVIDES_LIBAUDIO := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS
