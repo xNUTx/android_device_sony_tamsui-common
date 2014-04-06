@@ -96,10 +96,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm7x27a \
 
-# Camera
+# Camera Wrapper
 PRODUCT_PACKAGES += \
-    camera.msm7x27a \
-    libsurfaceflinger_client
+    camera.qcom 
+  
 
 # Omx
 PRODUCT_PACKAGES += \
