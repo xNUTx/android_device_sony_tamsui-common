@@ -87,7 +87,6 @@ PRODUCT_PACKAGES += \
     libaudioutils
 
 PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/config/audio_policy.conf:system/etc/audio_policy.conf \
     device/sony/tamsui-common/config/media_profiles.xml:system/etc/media_profiles.xml \
     device/sony/tamsui-common/config/media_codecs.xml:system/etc/media_codecs.xml \
     device/sony/tamsui-common/config/AudioFilter.csv:system/etc/AudioFilter.csv \
@@ -152,6 +151,10 @@ PRODUCT_PACKAGES += \
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# Enable Sony apps in play store
+PRODUCT_PACKAGES += \
+ro.com.google.clientidbase.ms=android-sonymobile
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # system props for the MM modules
@@ -191,15 +194,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Web Rendering
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.webview.provider=classic \ 
-    ro.soundrecorder.default_wav2ch=true
+    ro.webview.gralloc_unbind=1
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     com.qc.hardware=true \
     debug.sf.hw=1 \
-    debug.composition.type=mdp \
+    debug.composition.type=gpu \
     debug.gr.numframebuffers=3 \
     ro.bq.gpu_to_cpu_unsupported=1
     

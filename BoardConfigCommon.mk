@@ -1,5 +1,3 @@
-USE_CAMERA_STUB := true
-
 TARGET_SPECIFIC_HEADER_PATH := device/sony/tamsui-common/include
 
 TARGET_NO_BOOTLOADER := true
@@ -12,7 +10,6 @@ BOARD_WANTS_EMMC_BOOT := true
 # Legacy
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_AUDIO_VARIANT := legacy
-BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 TARGET_QCOM_MEDIA_VARIANT := legacy
 
 # Platform
@@ -40,6 +37,8 @@ COMMON_GLOBAL_CFLAGS += -DEGL_NEEDS_FNW
 
 # Kernel information
 TARGET_KERNEL_SOURCE := kernel/sony/msm7x27a
+# Remove the hash from below line when building for mesona
+# TARGET_KERNEL_SOURCE := kernel/sony/mesona
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_RECOVERY_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -52,7 +51,7 @@ TARGET_USES_OVERLAY := false
 TARGET_HAVE_BYPASS  := false
 TARGET_USES_GENLOCK := true
 TARGET_QCOM_HDMI_OUT := false
-TARGET_USES_ION := false
+TARGET_USES_ION := true
 TARGET_NO_HW_VSYNC := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_EGL_CFG := device/sony/tamsui-common/config/egl.cfg
@@ -63,8 +62,8 @@ QCOM_BSP_WITH_GENLOCK := true
 # libEGL: allow devices to workaround Google bug 10194508
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
+# Device specific hardware abstract layers 
 TARGET_PROVIDES_LIBLIGHT := true
-TARGET_PROVIDES_LIBAUDIO := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS
@@ -98,7 +97,7 @@ TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/sony/tamsui-common/vibrator/vibrator.c
 
 # Custom boot
-TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
+TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot; \#"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/tamsui-common/custombootimg.mk
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/sony/tamsui-common/releasetools/semc_ota_from_target_files
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/tamsui-common/recovery/recovery-keys.c
@@ -115,7 +114,6 @@ BOARD_USES_LEGACY_RIL := true
 BOARD_RIL_CLASS := ../../../device/sony/tamsui-common/ril/
 
 # Web Rendering
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM := true
 TARGET_FORCE_CPU_UPLOAD := true
 ENABLE_WEBGL := true
 
