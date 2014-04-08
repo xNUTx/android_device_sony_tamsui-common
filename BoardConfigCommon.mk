@@ -33,6 +33,7 @@ TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 COMMON_GLOBAL_CFLAGS += -DSONY_CAMERA -DQCOM_HARDWARE -DQCOM_SONY_HARDWARE -DMR0_AUDIO_BLOB -DANCIENT_GL -DQCOM_BSP_WITH_GENLOCK -Wno-sign-compare -Wno-error -Wno-deprecated -Wno-parentheses -Wno-ignored-qualifiers
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 COMMON_GLOBAL_CFLAGS += -DEGL_NEEDS_FNW
 
 # Kernel information
