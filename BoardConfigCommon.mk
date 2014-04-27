@@ -18,7 +18,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/sony/BoardConfigVendor.mk
+-include vendor/sony/tamsui-common/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/sony/tamsui-common/include
 
