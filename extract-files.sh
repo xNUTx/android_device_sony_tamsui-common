@@ -14,7 +14,7 @@
 # limitations under the License
 
 VENDOR=sony
-DEVICE=qcom-common
+DEVICE=tamsui-common
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 

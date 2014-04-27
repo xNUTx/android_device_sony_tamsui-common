@@ -1,7 +1,7 @@
 #!/bin/sh
 
 VENDOR=sony
-DEVICE=qcom-common
+DEVICE=tamsui-common
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 

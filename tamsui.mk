@@ -226,3 +226,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     hw.fm.isAnalog=true
+
+# proprietary side of the board
+$(call inherit-product, vendor/sony/tamsui-common/tamsui-common-vendor.mk)
