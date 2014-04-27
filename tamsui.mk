@@ -1,3 +1,21 @@
+# Copyright (C) 2012-2014 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# These is the hardware-specific overlay, which points to the location
+# of hardware-specific resource overrides, typically the frameworks and
+# application settings that are stored in resourced.
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/tamsui-common/overlay
@@ -23,36 +41,12 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-	device/sony/tamsui-common/prebuilt/sbin/rmt_storage:root/sbin/rmt_storage	\
-	device/sony/tamsui-common/prebuilt/sbin/tad:root/sbin/tad	\
-	device/sony/tamsui-common/prebuilt/sbin/ta_rmt_service:root/sbin/ta_rmt_service	\
-	device/sony/tamsui-common/prebuilt/sbin/wait4tad:root/sbin/wait4tad	\
-	device/sony/tamsui-common/config/init.sony.rc:root/init.sony.rc \
-	device/sony/tamsui-common/config/ueventd.sony.rc:root/ueventd.sony.rc
-
-# Adreno 200 GPU prebuilt blobs   
-PRODUCT_COPY_FILES += \
-	device/sony/tamsui-common/prebuilt/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw	\
-	device/sony/tamsui-common/prebuilt/etc/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw	\
-	device/sony/tamsui-common/prebuilt/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw	\
-	device/sony/tamsui-common/prebuilt/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw	\
-	device/sony/tamsui-common/prebuilt/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw	\
-	device/sony/tamsui-common/prebuilt/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw	\
-	device/sony/tamsui-common/prebuilt/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw	\
-	device/sony/tamsui-common/prebuilt/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so	\
-	device/sony/tamsui-common/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so	\
-	device/sony/tamsui-common/prebuilt/lib/libgsl.so:system/lib/libgsl.so	\
-	device/sony/tamsui-common/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so	\
-	device/sony/tamsui-common/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so	\
-	device/sony/tamsui-common/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg	\
-	device/sony/tamsui-common/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so	\
-	device/sony/tamsui-common/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so	\
-	device/sony/tamsui-common/prebuilt/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so	\
-	device/sony/tamsui-common/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so	\
-	device/sony/tamsui-common/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so	\
-	device/sony/tamsui-common/prebuilt/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so	\
-	device/sony/tamsui-common/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so	
-
+    device/sony/tamsui-common/prebuilt/sbin/rmt_storage:root/sbin/rmt_storage \
+    device/sony/tamsui-common/prebuilt/sbin/tad:root/sbin/tad \
+    device/sony/tamsui-common/prebuilt/sbin/ta_rmt_service:root/sbin/ta_rmt_service \
+    device/sony/tamsui-common/prebuilt/sbin/wait4tad:root/sbin/wait4tad	\
+    device/sony/tamsui-common/config/init.sony.rc:root/init.sony.rc \
+    device/sony/tamsui-common/config/ueventd.sony.rc:root/ueventd.sony.rc
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
@@ -98,8 +92,7 @@ PRODUCT_PACKAGES += \
 
 # Camera Wrapper
 PRODUCT_PACKAGES += \
-    camera.qcom 
-  
+    camera.qcom  
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -166,8 +159,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
    media.stagefright.enable-fma2dp=true \
    media.stagefright.enable-aac=true \
    media.stagefright.enable-qcp=true \
-   debug.camcorder.disablemeta=1
-   
+   debug.camcorder.disablemeta=1   
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \

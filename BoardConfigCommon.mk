@@ -1,3 +1,25 @@
+# Copyright (C) 2012-2014 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# WARNING: This line must come *before* including the proprietary
+# variant, so that it gets overwritten by the parent (which goes
+# against the traditional rules of inheritance).
+USE_CAMERA_STUB := true
+
+# inherit from the proprietary version
+include vendor/sony/qcom-common/common-vendor.mk
+
 TARGET_SPECIFIC_HEADER_PATH := device/sony/tamsui-common/include
 
 TARGET_NO_BOOTLOADER := true
@@ -26,13 +48,17 @@ TARGET_CPU_SMP := true
 TARGET_CORTEX_CACHE_LINE_32 := true
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_ARCH_LOWMEM := true
-
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
-COMMON_GLOBAL_CFLAGS += -DSONY_CAMERA -DQCOM_HARDWARE -DQCOM_SONY_HARDWARE -DMR0_AUDIO_BLOB -DANCIENT_GL -DQCOM_BSP_WITH_GENLOCK -Wno-sign-compare -Wno-error -Wno-deprecated -Wno-parentheses -Wno-ignored-qualifiers
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_LIBS := true
+
+COMMON_GLOBAL_CFLAGS += -DQCOM_SONY_HARDWARE -DQCOM_HARDWARE
+COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB -DANCIENT_GL -DQCOM_BSP_WITH_GENLOCK
 COMMON_GLOBAL_CFLAGS += -DEGL_NEEDS_FNW
 
 # Kernel information
@@ -67,22 +93,12 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS
-COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
-BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
+COMMON_GLOBAL_CFLAGS += -DSONY_CAMERA -DQCOM_ICS_COMPAT
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 TARGET_DISABLE_ARM_PIE := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 BOARD_USES_PMEM_ADSP := true
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_QCOM_LIBS := true
-
-# Add h/w acceleration in browser
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
-HTTP := chrome
 
 # GPS
 BOARD_USES_QCOM_LIBRPC := true
@@ -112,12 +128,17 @@ TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # RIL
-BOARD_USES_LEGACY_RIL := true
 BOARD_RIL_CLASS := ../../../device/sony/tamsui-common/ril/
 
 # Web Rendering
 TARGET_FORCE_CPU_UPLOAD := true
 ENABLE_WEBGL := true
+
+# Add h/w acceleration in browser
+WITH_JIT := true
+ENABLE_JSC_JIT := true
+JS_ENGINE := v8
+HTTP := chrome
 
 # Disable adb RSA security and enable adb root when debug
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
