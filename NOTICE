@@ -1,6 +1,8 @@
+   The device setup and all necessary integration with Android for this
+   software to run on these Sony devices are:
 
-   Copyright (c) 2008, The Android Open Source Project
-   Copyright (c) 2012-2014, The CyanogenMod Project
+   Copyright (c) 2012-2013, The CyanogenMod Project
+   Copyright (c) 2014, TamsuiCM11
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -188,4 +190,3 @@
       of your accepting any such warranty or additional liability.
 
    END OF TERMS AND CONDITIONS
-
