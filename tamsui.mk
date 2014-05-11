@@ -104,7 +104,8 @@ PRODUCT_PACKAGES += \
     libOmxAacEnc \
     libOmxAmrEnc \
     libstagefrighthw \
-    libdashplayer
+    libdashplayer \
+    qcmediaplayer
 
 # Bluetooth
 PRODUCT_PACKAGES += \
