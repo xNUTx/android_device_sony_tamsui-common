@@ -90,9 +90,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm7x27a \
 
-# Camera Wrapper
+# Camera
 PRODUCT_PACKAGES += \
-    camera.qcom  
+    camera.msm7x27a
+  
 
 # Omx
 PRODUCT_PACKAGES += \
