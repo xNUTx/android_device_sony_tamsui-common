@@ -1,5 +1,28 @@
-TARGET_SPECIFIC_HEADER_PATH := device/sony/tamsui-common/include
+# Copyright (C) 2012-2014 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# WARNING: This line must come *before* including the proprietary
+# variant, so that it gets overwritten by the parent (which goes
+# against the traditional rules of inheritance).
+
 USE_CAMERA_STUB := true
+
+# inherit from the proprietary version
+-include vendor/sony/tamsui-common/BoardConfigVendor.mk
+
+TARGET_SPECIFIC_HEADER_PATH := device/sony/tamsui-common/include
+
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -10,12 +33,6 @@ BOARD_WANTS_EMMC_BOOT := true
 # Legacy
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_AUDIO_VARIANT := legacy
-
-# Video
-TARGET_QCOM_LEGACY_OMX := true
-TARGET_QCOM_MEDIA_VARIANT := legacy
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := tamsui
@@ -69,6 +86,12 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 # Device specific hardware abstract layers 
 TARGET_PROVIDES_LIBLIGHT := true
+
+# Video
+TARGET_QCOM_LEGACY_OMX := true
+TARGET_QCOM_MEDIA_VARIANT := legacy
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS
