@@ -57,10 +57,9 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -DSONY_CAMERA -DQCOM_HARDWARE -DQCOM_SONY_HARDWARE -DMR0_AUDIO_BLOB -DANCIENT_GL -DQCOM_BSP_WITH_GENLOCK -Wno-sign-compare -Wno-error -Wno-deprecated -Wno-parentheses -Wno-ignored-qualifiers
 COMMON_GLOBAL_CFLAGS += -DEGL_NEEDS_FNW
 USE_DEVICE_SPECIFIC_CAMERA := true
+
 # Kernel information
 TARGET_KERNEL_SOURCE := kernel/sony/msm7x27a
-# Remove the hash from below line when building for mesona
-# TARGET_KERNEL_SOURCE := kernel/sony/mesona
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_RECOVERY_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 2048
