@@ -18,6 +18,8 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+COMMON_PATH := device/sony/tamsui-common
+
 DEVICE_PACKAGE_OVERLAYS += device/sony/tamsui-common/overlay
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
@@ -39,22 +41,23 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 #    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
 
-# Ramdisk
 PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/prebuilt/sbin/rmt_storage:root/sbin/rmt_storage \
-    device/sony/tamsui-common/prebuilt/sbin/tad:root/sbin/tad \
-    device/sony/tamsui-common/prebuilt/sbin/ta_rmt_service:root/sbin/ta_rmt_service \
-    device/sony/tamsui-common/prebuilt/sbin/wait4tad:root/sbin/wait4tad	\
-    device/sony/tamsui-common/config/init.sony.rc:root/init.sony.rc \
-    device/sony/tamsui-common/config/ueventd.sony.rc:root/ueventd.sony.rc
+    $(COMMON_PATH)/rootdir/sbin/rmt_storage:root/sbin/rmt_storage \
+    $(COMMON_PATH)/rootdir/sbin/tad:root/sbin/tad \
+    $(COMMON_PATH)/rootdir/sbin/ta_rmt_service:root/sbin/ta_rmt_service \
+    $(COMMON_PATH)/rootdir/sbin/wait4tad:root/sbin/wait4tad
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
+    $(COMMON_PATH)/rootdir/ueventd.sony.rc:root/ueventd.sony.rc
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/config/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
+    $(COMMON_PATH)/rootdir/system/etc/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
 
 # thermald config
 PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/config/thermald.conf:system/etc/thermald.conf
+    $(COMMON_PATH)/rootdir/system/etc/thermald.conf:system/etc/thermald.conf
 
 # QCOM Display
 PRODUCT_PACKAGES += \
@@ -80,11 +83,11 @@ PRODUCT_PACKAGES += \
     libaudioutils
 
 PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/config/audio_policy.conf:system/etc/audio_policy.conf \
-    device/sony/tamsui-common/config/media_profiles.xml:system/etc/media_profiles.xml \
-    device/sony/tamsui-common/config/media_codecs.xml:system/etc/media_codecs.xml \
-    device/sony/tamsui-common/config/AudioFilter.csv:system/etc/AudioFilter.csv \
-    device/sony/tamsui-common/config/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt
+    $(COMMON_PATH)/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    $(COMMON_PATH)/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_PATH)/rootdir/system/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
+    $(COMMON_PATH)/rootdir/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt
 
 # QCOM Power
 PRODUCT_PACKAGES += \
@@ -92,8 +95,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm7x27a
-  
+    camera.msm7x27a  
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -112,7 +114,21 @@ PRODUCT_PACKAGES += \
     libbt-vendor
 	
 PRODUCT_COPY_FILES += \
-    device/sony/tamsui-common/config/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+    $(COMMON_PATH)/rootdir/system/etc/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+
+# Boot Logo
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/boot/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT).rle:root/logo.rle
+
+# Offline charging animations
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_01.rle:system/etc/chgani/ca01.rle \
+    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_02.rle:system/etc/chgani/ca02.rle \
+    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_03.rle:system/etc/chgani/ca03.rle \
+    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_04.rle:system/etc/chgani/ca04.rle \
+    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_05.rle:system/etc/chgani/ca05.rle \
+    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_06.rle:system/etc/chgani/ca06.rle \
+    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_07.rle:system/etc/chgani/ca07.rle    
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -225,8 +241,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=30
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    hw.fm.isAnalog=true
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    hw.fm.isAnalog=true
 
 # proprietary side of the board
 $(call inherit-product, vendor/sony/tamsui-common/tamsui-common-vendor.mk)
