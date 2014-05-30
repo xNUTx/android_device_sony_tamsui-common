@@ -63,7 +63,7 @@ busybox echo ${BOOTREC_BUTTON_LED_OFF} > ${BOOTREC_CONTROL_LED}
 load_image=/sbin/ramdisk.cpio
 
 # boot decision
-if [ -s /dev/keycheck -o -e /cache/recovery/boot ]
+if [ -s /dev/keycheck ] || busybox grep -q recovery /cache/recovery/boot
 then
 	busybox echo 'RECOVERY BOOT' >>boot.txt
 	busybox rm -fr /cache/recovery/boot
@@ -92,6 +92,5 @@ busybox umount /proc
 busybox umount /sys
 
 busybox rm -fr /dev/*
-busybox date >>boot.txt
 export PATH="${_PATH}"
 exec /init
