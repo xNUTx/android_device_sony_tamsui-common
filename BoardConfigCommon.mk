@@ -32,6 +32,9 @@ BOARD_WANTS_EMMC_BOOT := true
 
 # Legacy
 TARGET_QCOM_DISPLAY_VARIANT := legacy
+TARGET_QCOM_AUDIO_VARIANT := legacy
+BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
+TARGET_QCOM_MEDIA_VARIANT := legacy
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := tamsui
@@ -85,10 +88,11 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Audio
-TARGET_QCOM_AUDIO_VARIANT := caf
-BOARD_USES_LEGACY_ALSA_AUDIO := true
-COMMON_GLOBAL_CFLAGS += -DNO_TUNNELED_SOURCE
-TARGET_PROVIDES_LIBAUDIO := true
+TARGET_QCOM_AUDIO_VARIANT := legacy
+#TARGET_QCOM_AUDIO_VARIANT := caf
+#BOARD_USES_LEGACY_ALSA_AUDIO := true
+#COMMON_GLOBAL_CFLAGS += -DNO_TUNNELED_SOURCE
+#TARGET_PROVIDES_LIBAUDIO := true
 
 # Video
 TARGET_QCOM_LEGACY_OMX := true
@@ -136,6 +140,7 @@ BOARD_CUSTOM_BOOTIMG_MK := device/sony/tamsui-common/custombootimg.mk
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/tamsui-common/recovery/recovery-keys.c
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/sony/tamsui-common/releasetools/semc_ota_from_target_files
 
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true

@@ -22,4 +22,3 @@ index afaf12a..cab7acc 100644
      } else if (cmd == CAMERA_CMD_HISTOGRAM_OFF) {
 -- 
 1.7.5.4
-
