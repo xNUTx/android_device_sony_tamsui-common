@@ -26,7 +26,7 @@
      <!-- EVENT_SIM_PERSO_LOCKED events from the Sim.  If true, this will
           prevent the IccDepersonalizationPanel from being shown,
           and effectively disable the "Sim perso unlock" feature. -->
-     <bool name="ignore_perso_locked_events">true</bool>
+     <!-- <bool name="ignore_perso_locked_events">true</bool> -->
 
     <!-- Determine whether calls to mute the microphone in PhoneUtils
          are routed through the android.media.AudioManager class (true) or through
