@@ -131,7 +131,7 @@ BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/sony/tamsui-common/vibrator/vi
 
 # Custom boot
 TARGET_NO_SEPARATE_RECOVERY := true
-TARGET_RECOVERY_PRE_COMMAND := "echo $@ > /cache/recovery/boot"
+TARGET_RECOVERY_PRE_COMMAND := "/sbin/pre-recovery.sh"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/tamsui-common/custombootimg.mk
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/tamsui-common/recovery/recovery-keys.c
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
