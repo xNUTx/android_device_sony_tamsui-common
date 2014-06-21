@@ -49,7 +49,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
-    $(COMMON_PATH)/rootdir/ueventd.sony.rc:root/ueventd.sony.rc
+    $(COMMON_PATH)/rootdir/ueventd.sony.rc:root/ueventd.sony.rc \
+    $(COMMON_PATH)/rootdir/init.recovery.sony.rc:root/init.recovery.sony.rc
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
