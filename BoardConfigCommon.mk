@@ -134,7 +134,7 @@ TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/sony/tamsui-common/vibrator/vibrator.c
 
 # Custom boot
-TARGET_NO_SEPARATE_RECOVERY := true
+#TARGET_NO_SEPARATE_RECOVERY := true
 TARGET_RECOVERY_PRE_COMMAND := "echo $@ > /cache/recovery/boot"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/tamsui-common/custombootimg.mk
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/sony/tamsui-common/recovery/recovery-keys.c
