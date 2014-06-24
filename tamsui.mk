@@ -41,13 +41,6 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 #    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
 
-# Prebuilts
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/sbin/rmt_storage:root/sbin/rmt_storage \
-    $(COMMON_PATH)/rootdir/sbin/tad:root/sbin/tad \
-    $(COMMON_PATH)/rootdir/sbin/ta_rmt_service:root/sbin/ta_rmt_service \
-    $(COMMON_PATH)/rootdir/sbin/wait4tad:root/sbin/wait4tad
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
