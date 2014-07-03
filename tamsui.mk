@@ -41,13 +41,6 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 #    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
 
-# Prebuilts
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/sbin/rmt_storage:root/sbin/rmt_storage \
-    $(COMMON_PATH)/rootdir/sbin/tad:root/sbin/tad \
-    $(COMMON_PATH)/rootdir/sbin/ta_rmt_service:root/sbin/ta_rmt_service \
-    $(COMMON_PATH)/rootdir/sbin/wait4tad:root/sbin/wait4tad
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
@@ -127,16 +120,6 @@ PRODUCT_COPY_FILES += \
 # Boot Logo
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/boot/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT).rle:root/logo.rle
-
-# Offline charging animations
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_01.rle:system/etc/chgani/ca01.rle \
-    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_02.rle:system/etc/chgani/ca02.rle \
-    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_03.rle:system/etc/chgani/ca03.rle \
-    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_04.rle:system/etc/chgani/ca04.rle \
-    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_05.rle:system/etc/chgani/ca05.rle \
-    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_06.rle:system/etc/chgani/ca06.rle \
-    $(COMMON_PATH)/boot/animations/$(TARGET_SCREEN_WIDTH)x$(TARGET_SCREEN_HEIGHT)/charging_animation_07.rle:system/etc/chgani/ca07.rle    
 
 # GPS
 PRODUCT_PACKAGES += \

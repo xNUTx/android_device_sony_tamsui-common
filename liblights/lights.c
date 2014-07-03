@@ -113,7 +113,7 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 	ALOGV("%s brightness=%d color=0x%08x", __func__,brightness,state->color);
 	pthread_mutex_lock(&g_lock);
 	g_backlight = brightness;
-#ifdef DEVICE_NANHU
+#ifdef STANDARD_LIGHTS
 	err = write_int (LCD_BACKLIGHT_FILE, brightness);
 #else
 	err = write_int (LCD_BACKLIGHT_FILE, (brightness / 2));
@@ -128,7 +128,7 @@ static int set_light_buttons (struct light_device_t *dev, struct light_state_t c
 	int on = is_lit(state);
 	pthread_mutex_lock(&g_lock);
 
-#ifndef DEVICE_NANHU
+#ifndef STANDARD_LIGHTS
 	if (on >0)
 		err = write_string (LED_CONTROL_FILE, KEY_LED_ON);
 	else
@@ -145,7 +145,7 @@ static int set_light_buttons (struct light_device_t *dev, struct light_state_t c
 static void set_shared_light_locked (struct light_device_t *dev, struct light_state_t *state) {
 	int r, g, b;
 	int err = 0;
-#ifdef DEVICE_NANHU
+#ifdef STANDARD_LIGHTS
 	int sns = 0;
 	int delayOn, delayOff;
 #endif
@@ -154,12 +154,12 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	g = (state->color >> 8) & 0xFF;
 	b = (state->color) & 0xFF;
 
-#ifdef DEVICE_NANHU
+#ifdef STANDARD_LIGHTS
 	delayOn = state->flashOnMS;
 	delayOff = state->flashOffMS;
 #endif	
 
-#ifndef DEVICE_NANHU	
+#ifndef STANDARD_LIGHTS	
 	if (state->flashMode != LIGHT_FLASH_NONE) {
 #ifndef SUB_LED_NOTIFICATION
 		err = write_string (LED_CONTROL_FILE, RED_LED_BLINK_ON);

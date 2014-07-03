@@ -268,13 +268,6 @@ service qmuxd /system/bin/qmuxd
 service netmgrd /system/bin/netmgrd
     class late_start
 
-# SEMC, TA Daemon
-service tad /sbin/tad /dev/block/mmcblk0 8,16,256
-    class trimarea
-    user root
-    group root
-    socket tad stream 0660 system system
-
 on property:sys.radio.shutdown=true
    exec /system/bin/sh /system/etc/init.qcom.efs.sync.sh
 
@@ -381,11 +374,6 @@ service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
-
-# Accelerometer
-service akmd /system/bin/akmd8975
-    class main
-    user root
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
