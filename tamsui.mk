@@ -38,8 +38,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-#    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -80,7 +79,6 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.a2dp.default \
     audio.usb.default \
-    audio_policy.conf \
     libaudioutils
 
 PRODUCT_COPY_FILES += \
@@ -133,10 +131,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# FmRadio
-#PRODUCT_PACKAGES += \
-#    FmRadioReceiver
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
@@ -172,7 +166,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SonyQualcommRIL7x27a \
-    ro.telephony.ril.v3=skipnullaid \
+    ro.telephony.ril.v3=skipnullaid, qcomdsds \
     rild.libpath=/system/lib/libril-qc-1.so \
     rild.libargs=-d/dev/smd0 \
     persist.rild.nitz_plmn= \
@@ -192,10 +186,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true \
     persist.data_netmgrd_nint=3 \
     ro.ril.transmitpower=true
-
-# Web Rendering
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.webview.gralloc_unbind=1
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -231,9 +221,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=30
-
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    hw.fm.isAnalog=true
 
 # proprietary side of the board
 $(call inherit-product, vendor/sony/tamsui-common/tamsui-common-vendor.mk)
