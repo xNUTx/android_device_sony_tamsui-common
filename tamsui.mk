@@ -212,6 +212,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low RAM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=true
+    
+PRODUCT_PROPERTY_OVERRIDES += \ 
+    sys.mem.max_hidden_apps=8
+    
 
 # QCOM CpuGovernorService
 PRODUCT_PROPERTY_OVERRIDES += \
