@@ -34,7 +34,7 @@ TARGET_BOOTLOADER_BOARD_NAME := tamsui
 TARGET_BOARD_PLATFORM := msm7x27a
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
-TARGET_CPU_VARIANT := cortex-a5
+TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH := arm
@@ -47,8 +47,8 @@ TARGET_ARCH_LOWMEM := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 COMMON_GLOBAL_CFLAGS += -DANCIENT_GL -DEGL_NEEDS_FNW
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 
 TARGET_KERNEL_SOURCE := kernel/sony/msm7x27a
 BOARD_KERNEL_BASE := 0x00200000
