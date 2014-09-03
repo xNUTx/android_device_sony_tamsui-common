@@ -71,7 +71,8 @@ PRODUCT_PACKAGES += \
     libQcomUI \
     libqdutils \
     libtilerenderer \
-    memtrack.msm7x27a
+    memtrack.msm7x27a \
+    libqdMetaData
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -191,32 +192,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     com.qc.hardware=true \
-    debug.sf.hw=1 \
     debug.composition.type=gpu \
-    debug.gr.numframebuffers=3 \
-    ro.bq.gpu_to_cpu_unsupported=1
+    debug.gralloc.map_fb_memory=true \
+    persist.hwc.mdpcomp.enable=false \
+    debug.mdpcomp.logs=0
     
 # Set default USB interface
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb    
 
-# Fix legacy fb on kitkat
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.zygote.disable_gl_preload=1
-
-## Reference values from CAF
-PRODUCT_PROPERTY_OVERRIDES += \
-    hwui.render_dirty_regions=false \
-    ro.max.fling_velocity=4000
-
 # Low RAM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=true
     
-PRODUCT_PROPERTY_OVERRIDES += \ 
-    sys.mem.max_hidden_apps=8
-    
-
 # QCOM CpuGovernorService
 PRODUCT_PROPERTY_OVERRIDES += \
     dev.pm.dyn_samplingrate=1
