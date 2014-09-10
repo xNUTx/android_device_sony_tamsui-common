@@ -63,15 +63,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     copybit.msm7x27a \
     gralloc.msm7x27a \
-    hwcomposer.msm7x27a \
+    memtrack.msm7x27a \
     libgenlock \
     libI420colorconvert \
     libmemalloc \
     liboverlay \
-    libQcomUI \
     libqdutils \
     libtilerenderer \
-    memtrack.msm7x27a \
     libqdMetaData
 
 # Audio
@@ -181,10 +179,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     com.qc.hardware=true \
-    debug.composition.type=gpu \
+    debug.composition.type=dyn \
     debug.gralloc.map_fb_memory=true \
     persist.hwc.mdpcomp.enable=false \
-    debug.mdpcomp.logs=0
+    debug.mdpcomp.logs=0 \
+    debug.hwc.fakevsync=1
     
 # Set default USB interface
 PRODUCT_PROPERTY_OVERRIDES += \

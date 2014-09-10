@@ -43,8 +43,10 @@ TARGET_CPU_SMP := true
 TARGET_CORTEX_CACHE_LINE_32 := true
 TARGET_ARCH_LOWMEM := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 
 COMMON_GLOBAL_CFLAGS += -DUSE_MDP3
+COMMON_GLOBAL_CFLAGS += -DLPA_DEFAULT_BUFFER_SIZE=480
 TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 
@@ -66,11 +68,10 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Graphics
 USE_OPENGL_RENDERER := true
-TARGET_USES_OVERLAY := false
-TARGET_QCOM_HDMI_OUT := false
 TARGET_USES_ION := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
+TARGET_DISPLAY_USE_RETIRE_FENCE := true
 BOARD_EGL_CFG := device/sony/tamsui-common/rootdir/system/etc/egl.cfg
 TARGET_NO_INITLOGO := true
 
@@ -100,7 +101,8 @@ TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/sony/tamsui-common/vibrator/vibrator.c
 
-# Custom boot
+# Custom boot & Recovery
+BOARD_RECOVERY_SWIPE := true
 TARGET_NO_SEPARATE_RECOVERY := true
 TARGET_RECOVERY_PRE_COMMAND := "/sbin/pre-recovery.sh"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/tamsui-common/custombootimg.mk
