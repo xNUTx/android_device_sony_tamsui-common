@@ -20,7 +20,6 @@ index 65cdba4..ef72535 100644
 +#ifdef TCM11_CAM_PARAMS
 +const char CameraParameters::KEY_FOCUS_AREA_CENTER[] = "focus-area-center";
 +const char CameraParameters::KEY_EX_SUPPORTED_METERING_MODES[] = "semc-metering-mode-values";
-+const char CameraParameters::KEY_POWER_MODE[] = "power-mode";
 +#ifdef QCOM_SONY_NEW_CAMERA
 +const char CameraParameters::SCENE_MODE_DOCUMENT[] = "document";
 +#else
@@ -30,8 +29,6 @@ index 65cdba4..ef72535 100644
 +const char CameraParameters::SEMC_METRY_CENTER[] = "center-weighted";
 +const char CameraParameters::SEMC_METRY_FRAME[] = "frame-adverage";
 +const char CameraParameters::SEMC_METRY_SPOT[] = "spot";
-+const char CameraParameters::LOW_POWER[] = "Low_Power";
-+const char CameraParameters::NORMAL_POWER[] = "Normal_Power";
 +#endif
 +
  // Values for white balance settings.
@@ -60,15 +57,13 @@ index 02928f0..8d3c3c7 100644
      // has no effect on still image capture.
      static const char KEY_VIDEO_STABILIZATION[];
 +#ifdef TCM11_CAM_PARAMS
-+    static const char KEY_POWER_MODE[];
 +#ifdef QCOM_SONY_NEW_CAMERA
 +    static const char SCENE_MODE_DOCUMENT[];
 +#else
 +    static const char EX_SCENE_MODE_DOCUMENT[];
 +#endif
-+    static const char LOW_POWER[];
-+    static const char NORMAL_POWER[];
 +    static const char KEY_EX_SUPPORTED_METERING_MODES[];
++    static const char KEY_FOCUS_AREA_CENTER [];
 +    static const char KEY_SEMC_METRY_MODE[];
 +    static const char SEMC_METRY_CENTER[];
 +    static const char SEMC_METRY_FRAME[];
