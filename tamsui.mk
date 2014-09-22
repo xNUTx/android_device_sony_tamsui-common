@@ -24,6 +24,8 @@ DEVICE_PACKAGE_OVERLAYS += device/sony/tamsui-common/overlay
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
+PRODUCT_BOOT_JARS += qcmediaplayer
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -106,6 +108,9 @@ PRODUCT_PACKAGES += \
     libOmxAmrEnc \
     libstagefrighthw \
     libdashplayer
+
+# qcmediaplayer
+PRODUCT_PACKAGES += qcmediaplayer
 
 # Bluetooth
 PRODUCT_PACKAGES += \
