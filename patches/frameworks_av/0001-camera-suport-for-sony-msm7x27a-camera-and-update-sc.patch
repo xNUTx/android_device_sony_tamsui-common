@@ -20,7 +20,6 @@ index 65cdba4..ef72535 100644
 +#ifdef TCM11_CAM_PARAMS
 +const char CameraParameters::KEY_FOCUS_AREA_CENTER[] = "focus-area-center";
 +const char CameraParameters::KEY_EX_SUPPORTED_METERING_MODES[] = "semc-metering-mode-values";
-+const char CameraParameters::KEY_POWER_MODE[] = "power-mode";
 +#ifdef QCOM_SONY_NEW_CAMERA
 +const char CameraParameters::SCENE_MODE_DOCUMENT[] = "document";
 +#else
@@ -30,8 +29,6 @@ index 65cdba4..ef72535 100644
 +const char CameraParameters::SEMC_METRY_CENTER[] = "center-weighted";
 +const char CameraParameters::SEMC_METRY_FRAME[] = "frame-adverage";
 +const char CameraParameters::SEMC_METRY_SPOT[] = "spot";
-+const char CameraParameters::LOW_POWER[] = "Low_Power";
-+const char CameraParameters::NORMAL_POWER[] = "Normal_Power";
 +#endif
 +
  // Values for white balance settings.
