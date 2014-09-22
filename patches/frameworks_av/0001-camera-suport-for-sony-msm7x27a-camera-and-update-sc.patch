@@ -60,14 +60,11 @@ index 02928f0..8d3c3c7 100644
      // has no effect on still image capture.
      static const char KEY_VIDEO_STABILIZATION[];
 +#ifdef TCM11_CAM_PARAMS
-+    static const char KEY_POWER_MODE[];
 +#ifdef QCOM_SONY_NEW_CAMERA
 +    static const char SCENE_MODE_DOCUMENT[];
 +#else
 +    static const char EX_SCENE_MODE_DOCUMENT[];
 +#endif
-+    static const char LOW_POWER[];
-+    static const char NORMAL_POWER[];
 +    static const char KEY_EX_SUPPORTED_METERING_MODES[];
 +    static const char KEY_SEMC_METRY_MODE[];
 +    static const char SEMC_METRY_CENTER[];
