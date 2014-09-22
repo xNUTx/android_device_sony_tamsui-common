@@ -63,6 +63,7 @@ index 02928f0..8d3c3c7 100644
 +    static const char EX_SCENE_MODE_DOCUMENT[];
 +#endif
 +    static const char KEY_EX_SUPPORTED_METERING_MODES[];
++    static const char KEY_FOCUS_AREA_CENTER [];
 +    static const char KEY_SEMC_METRY_MODE[];
 +    static const char SEMC_METRY_CENTER[];
 +    static const char SEMC_METRY_FRAME[];
