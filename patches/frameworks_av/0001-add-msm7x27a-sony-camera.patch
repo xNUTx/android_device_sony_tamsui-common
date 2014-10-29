@@ -1,0 +1,88 @@
+From 621be634dd7e6912e96f94343d389e7c226960e1 Mon Sep 17 00:00:00 2001
+From: lozohcum <lozohcum@gmail.com>
+Date: Wed, 29 Oct 2014 22:28:32 +0100
+Subject: [PATCH] add msm7x27a sony camera
+
+---
+ camera/CameraParameters.cpp       | 21 ++++++++++++++++++++-
+ include/camera/CameraParameters.h | 18 ++++++++++++++++++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
+
+diff --git a/camera/CameraParameters.cpp b/camera/CameraParameters.cpp
+index 65cdba4..704c0f6 100644
+--- a/camera/CameraParameters.cpp
++++ b/camera/CameraParameters.cpp
+@@ -269,6 +269,20 @@ const char CameraParameters::KEY_SONY_MAX_MULTI_FOCUS_NUM[] = "sony-max-multi-fo
+ const char CameraParameters::KEY_SONY_SCENE_DETECT_SUPPORTED[] = "sony-scene-detect-supported";
+ #endif
+ 
++#ifdef TCM11_CAM_PARAMS
++const char CameraParameters::KEY_FOCUS_AREA_CENTER[] = "focus-area-center";
++const char CameraParameters::KEY_EX_SUPPORTED_METERING_MODES[] = "semc-metering-mode-values";
++#ifdef QCOM_SONY_NEW_CAMERA
++const char CameraParameters::SCENE_MODE_DOCUMENT[] = "document";
++#else
++const char CameraParameters::EX_SCENE_MODE_DOCUMENT[] = "document";
++#endif
++const char CameraParameters::KEY_SEMC_METRY_MODE[] = "semc-metering-mode";
++const char CameraParameters::SEMC_METRY_CENTER[] = "center-weighted";
++const char CameraParameters::SEMC_METRY_FRAME[] = "frame-adverage";
++const char CameraParameters::SEMC_METRY_SPOT[] = "spot";
++#endif
++
+ // Values for white balance settings.
+ const char CameraParameters::WHITE_BALANCE_AUTO[] = "auto";
+ const char CameraParameters::WHITE_BALANCE_INCANDESCENT[] = "incandescent";
+@@ -950,7 +964,12 @@ void CameraParameters::getMeteringAreaCenter(int *x, int *y) const
+         *y = (arr[1] + arr[3])/2; //center_y = (y1+y2)/2
+     }
+ }
+-
++#ifdef QCOM_SONY_HARDWARE
++void CameraParameters::getFocusAreaCenter(int *x, int *y) const
++{
++ // dummy
++}
++#endif
+ void CameraParameters::getTouchIndexAf(int *x, int *y) const
+ {
+     *x = -1;
+diff --git a/include/camera/CameraParameters.h b/include/camera/CameraParameters.h
+index 02928f0..44c1d75 100644
+--- a/include/camera/CameraParameters.h
++++ b/include/camera/CameraParameters.h
+@@ -609,6 +609,21 @@ public:
+     // has no effect on still image capture.
+     static const char KEY_VIDEO_STABILIZATION[];
+ 
++#ifdef TCM11_CAM_PARAMS
++#ifdef QCOM_SONY_NEW_CAMERA
++    static const char SCENE_MODE_DOCUMENT[];
++#else
++    static const char EX_SCENE_MODE_DOCUMENT[];
++#endif
++    static const char KEY_EX_SUPPORTED_METERING_MODES[];
++    static const char KEY_FOCUS_AREA_CENTER [];
++    static const char KEY_SEMC_METRY_MODE[];
++    static const char SEMC_METRY_CENTER[];
++    static const char SEMC_METRY_FRAME[];
++    static const char SEMC_METRY_SPOT[];
++    
++#endif
++
+ #ifdef QCOM_HARDWARE
+     static const char KEY_MEMORY_COLOR_ENHANCEMENT[];
+     static const char KEY_SUPPORTED_MEM_COLOR_ENHANCE_MODES[];
+@@ -1080,6 +1095,9 @@ public:
+     void setOrientation(int orientation);
+     void setPreviewFpsRange(int minFPS,int maxFPS);
+     void getSupportedHfrSizes(Vector<Size> &sizes) const;
++#ifdef QCOM_SONY_HARDWARE
++    void getFocusAreaCenter(int *x, int *y) const;
++#endif
+ #endif
+ 
+ private:
+-- 
+1.9.1
+
