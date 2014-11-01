@@ -80,6 +80,8 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.a2dp.default \
     audio.usb.default \
+    libaudio-resampler \
+    libaudioparameter \
     libaudioutils
 
 PRODUCT_COPY_FILES += \
