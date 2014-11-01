@@ -99,6 +99,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm7x27a  
 
+# Camera wrapper
+PRODUCT_PACKAGES += \
+    libmmgesture_services
+
 # Omx
 PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
@@ -202,6 +206,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low RAM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=true
+
+# ART as default runtime
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.dalvik.vm.lib=libart.so
     
 # QCOM CpuGovernorService
 PRODUCT_PROPERTY_OVERRIDES += \
