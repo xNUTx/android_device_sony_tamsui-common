@@ -208,8 +208,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=true
 
 # ART as default runtime
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.dalvik.vm.lib=libart.so
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    persist.sys.dalvik.vm.lib=libart.so
+
+# Don't know why it requires at least one boot with dalvik
+# So art has to be switched after first boot
+
     
 # QCOM CpuGovernorService
 PRODUCT_PROPERTY_OVERRIDES += \
